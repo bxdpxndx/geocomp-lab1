@@ -17,6 +17,8 @@ Octree::Octree(const CASEModel &m) : triangles(m.getTriangles()), model(m){
     for(unsigned i = 0; i < triangles.size(); i++) {
         root_node->add_triangle(i);
     }
+    current_node = root_node;
+    root_node->parent = root_node;
     root_node->set_BBox(m.get_BBox());
     root_node->build_octree();
 
@@ -27,7 +29,7 @@ vector3f Octree::get_vertex(unsigned idx) const{
 }
 
 void Octree::render() const {
-    root_node->render();
+    current_node->render();
 }
 
 const triangle* Octree::get_intersecting_triangle(const vector3f & point, const vector3f & direction, float *distance) const {
@@ -46,6 +48,20 @@ const triangle* Octree::get_intersecting_triangle(const vector3f & point, const 
 
 Octree::~Octree() {
     delete root_node;
+}
+
+void Octree::getParent() {
+    current_node = current_node->parent;
+}
+
+void Octree::getChildren(int id) {
+    if (current_node->children[id] != NULL) {
+        current_node = current_node->children[id];
+    }
+}
+
+void Octree::getRoot() {
+    current_node = root_node;
 }
 
 OctreeNode::OctreeNode(const Octree *r, int d, int min_t) : root(r), depth(d), min_tri(min_t), n_tri(0) {
@@ -95,6 +111,9 @@ int OctreeNode::get_intersecting_triangle(const vector3f & point, const vector3f
 
 void OctreeNode::render() const {
     BBox.render();
+    for(int t = 0; t < triangle_references.size(); t++) {
+        draw_triangle(t);
+    }
     for(int i = 0; i < 8; i++) {
         if (children[i] != NULL) {
             children[i]->render();
@@ -132,7 +151,7 @@ void OctreeNode::build_octree() {
                   i&2?center.y:BBox.bottom,
                   i&1?center.z:BBox.back); 
         children[i]->set_BBox(box);
-
+        children[i]->parent = this;
     }
     while(triangle_references.size() > 0) {
         int idx = triangle_references.back();
@@ -189,4 +208,13 @@ bool triangle_intersects(const vector3f & v1,
     }
 
     return false;
+}
+
+void draw_triangle(const triangle & t, Octree * root) {
+        glPolygonMode(GL_BACK, GL_LINE);
+        glColor3f(0.2f, 0.6f, 0.4f);
+        glBegin(GL_TRIANGLES);
+        glVertex3fv(root->get_vertex(t.a));
+        glVertex3fv(root->get_vertex(t.b));
+        glVertex3fv(root->get_vertex(t.c));
 }

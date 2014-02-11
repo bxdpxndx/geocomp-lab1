@@ -10,7 +10,11 @@ public:
     const std::vector<triangle> &triangles;
     Octree(const CASEModel & m);
     ~Octree();
-    
+
+    void getParent();
+    void getChildren(int idx);
+    void getRoot();
+
     vector3f get_vertex(unsigned int i) const;
 
     const triangle* get_intersecting_triangle(const vector3f & point, const vector3f & direction, float *distance) const;
@@ -20,6 +24,7 @@ public:
 
 private:
     OctreeNode *root_node;
+    OctreeNode *current_node;
     CASEModel model;
 };
 
@@ -30,6 +35,7 @@ public:
 
     int get_intersecting_triangle(const vector3f & point, const vector3f & direction, float *distance) const;
     const Octree* root;
+    const OctreeNode* parent;
     void add_triangle(int idx);
 	void build_octree();
     void set_BBox(box3f b);
