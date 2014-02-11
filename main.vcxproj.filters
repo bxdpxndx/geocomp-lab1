@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ase.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="text.cpp" />
+    <ClCompile Include="vector3f.cpp" />
+    <ClCompile Include="Octree.cpp" />
+    <ClCompile Include="box3f.cpp" />
+    <ClCompile Include="input.cpp" />
+    <ClCompile Include="matrix4x4f.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ase.h" />
+    <ClInclude Include="matrix4x4f.h" />
+    <ClInclude Include="text.h" />
+    <ClInclude Include="vector3f.h" />
+    <ClInclude Include="Octree.h" />
+    <ClInclude Include="box3f.h" />
+    <ClInclude Include="input.h" />
+  </ItemGroup>
+</Project>
