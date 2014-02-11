@@ -16,7 +16,8 @@
 #include <string>
 #include <sstream>
 using namespace std;
-
+#include "Octree.h"
+extern Octree *o;
 
 
 
@@ -31,6 +32,7 @@ public:
 	glm::mat4 View;
 	glm::vec3 Camera;
 	glm::mat4 model;
+
 
 
 	// Fun
