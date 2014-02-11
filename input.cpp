@@ -42,23 +42,32 @@ void input::onReshape(int w, int h){
 
 void input::MyKeyboardFunc(unsigned char Key, int x, int y){
 	switch (Key){
-	case '+': SetZoom(-1);				break; // Zoom IN 
-	case '-': SetZoom(1);				break; // Zoom OUT
-	case ',': SetDolly(-1);				break; // Dolly IN 
-	case '.': SetDolly(1);				break; // Dolly OUT
-	case 'q': MoveObj( 1, 0, 0);		break; // Move X + OBJ
-	case 'a': MoveObj(-1, 0, 0);		break; // Move X - OBJ          
-	case 'w': MoveObj(0,  1, 0);		break; // Move Y + OBJ
-	case 's': MoveObj(0, -1, 0);		break; // Move Y - OBJ
-	case 'e': MoveObj(0, 0,  1);		break; // Move Z + OBJ
-	case 'd': MoveObj(0, 0, -1);		break; // Move Z + OBJ  
-	case 'r': RotObj(1, 0, 0,  1);		break; // Rotate X + OBJ 
-	case 'f': RotObj(1, 0, 0, -1);		break; // Rotate X - OBJ        
-	case 't': RotObj(0, 1, 0,  1);		break; // Rotate Y + OBJ
-	case 'g': RotObj(0, 1, 0, -1);		break; // Rotate Y - OBJ 
-	case 'y': RotObj(0, 0, 1,  1);		break; // Rotate Z + OBJ
-	case 'h': RotObj(0, 0, 1, -1);		break; // Rotate Z + OBJ  
-	case 'Z': case 'z': reset();        break; // Reset to defaults
+		case '+': SetZoom(-1);				break; // Zoom IN 
+		case '-': SetZoom(1);				break; // Zoom OUT
+		case ',': SetDolly(-1);				break; // Dolly IN 
+		case '.': SetDolly(1);				break; // Dolly OUT
+		case 'q': MoveObj( 1, 0, 0);		break; // Move X + OBJ
+		case 'a': MoveObj(-1, 0, 0);		break; // Move X - OBJ          
+		case 'w': MoveObj(0,  1, 0);		break; // Move Y + OBJ
+		case 's': MoveObj(0, -1, 0);		break; // Move Y - OBJ
+		case 'e': MoveObj(0, 0,  1);		break; // Move Z + OBJ
+		case 'd': MoveObj(0, 0, -1);		break; // Move Z + OBJ  
+		case 'r': RotObj(1, 0, 0,  1);		break; // Rotate X + OBJ 
+		case 'f': RotObj(1, 0, 0, -1);		break; // Rotate X - OBJ        
+		case 't': RotObj(0, 1, 0,  1);		break; // Rotate Y + OBJ
+		case 'g': RotObj(0, 1, 0, -1);		break; // Rotate Y - OBJ 
+		case 'y': RotObj(0, 0, 1,  1);		break; // Rotate Z + OBJ
+		case 'h': RotObj(0, 0, 1, -1);		break; // Rotate Z + OBJ  
+		case 'Z': case 'z': reset();        break; // Reset to defaults
+		case '1': case '2': case  '3': case  '4': case  '5': case  '6': case  '7': case  '8': 
+			o.getChildren(Key);
+			break;
+		case 'p':
+			o.getParent();
+			break;
+		case 'o':
+			o.getRood();
+			break;
 	};
 }
 
