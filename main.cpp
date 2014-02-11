@@ -184,21 +184,8 @@ void mouse(int button, int state, int x, int y)
 	
     switch (button) {
     case GLUT_LEFT_BUTTON:
-        {
-            p = inputinstance.GetVecPoint(g_mouse_x, g_mouse_y, 0, &v);
-            const triangle *t = o->get_intersecting_triangle(p, v, NULL);
-			//gluUnProject(g_mouse_x, g_mouse_y, 0.f, inputinstance.model, inputinstance.Projection, inputinstance.direction, q, w, e);
-
-			//cout << "mouse REAL world" << "_" << d[0] << "_" << d[1] << "_" << d[2] << endl;
-
-			cout << "point" << p.x << p.y << p.z << endl;
-			cout << "vector" << v.x << v.y << v.z << endl;
-			if (t!=NULL){
-                selected.push_back(t);
-				cout << "New triangle !" << endl;
-            }
+		g_buttons[LEFTMOUSE] = (state == GLUT_DOWN);
         break;
-        }
     case GLUT_MIDDLE_BUTTON:
         g_buttons[MIDDLEMOUSE] = (state == GLUT_DOWN);
         break;
