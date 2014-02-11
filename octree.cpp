@@ -1,5 +1,6 @@
 #include "octree.h"
 #include "ase.h"
+#include "GL/gl.h"
 #include <cassert>
 #include <cmath>
 #include <cfloat>
@@ -112,7 +113,7 @@ int OctreeNode::get_intersecting_triangle(const vector3f & point, const vector3f
 void OctreeNode::render() const {
     BBox.render();
     for(int t = 0; t < triangle_references.size(); t++) {
-        draw_triangle(t);
+        draw_triangle(root->triangles[t], root);
     }
     for(int i = 0; i < 8; i++) {
         if (children[i] != NULL) {
@@ -210,7 +211,7 @@ bool triangle_intersects(const vector3f & v1,
     return false;
 }
 
-void draw_triangle(const triangle & t, Octree * root) {
+void draw_triangle(const triangle & t, const Octree * root) {
         glPolygonMode(GL_BACK, GL_LINE);
         glColor3f(0.2f, 0.6f, 0.4f);
         glBegin(GL_TRIANGLES);

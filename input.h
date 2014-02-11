@@ -16,7 +16,7 @@
 #include <string>
 #include <sstream>
 using namespace std;
-#include "Octree.h"
+#include "octree.h"
 extern Octree *o;
 
 

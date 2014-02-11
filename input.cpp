@@ -66,7 +66,7 @@ void input::MyKeyboardFunc(unsigned char Key, int x, int y){
 			o->getParent();
 			break;
 		case 'o':
-			o->getRood();
+			o->getRoot();
 			break;
 	};
 }
