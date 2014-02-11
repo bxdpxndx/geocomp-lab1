@@ -164,7 +164,7 @@ vector3f input::UnProjection(int  x, int  y, int  z){
 	vector3f newPos;
 	glm::vec4 cords;
 	glm::vec3 d;
-	GLint viewport [4];
+	//GLint viewport [4];
 
 	////////////
 	GLdouble ox = 0.0, oy = 0.0, oz = 0.0;
@@ -351,8 +351,8 @@ int glhUnProjectf(float winx, float winy, float winz, float *modelview, float *p
 	//and store in A[16]
 	MultiplyMatrices4by4OpenGL_FLOAT(A, projection, modelview);
 	//Now compute the inverse of matrix A
-	if (glhInvertMatrixf2(A, m) == 0)
-		return 0;
+	//if (glhInvertMatrixf2(A, m) == 0)
+	//	return 0;
 	//Transformation of normalized coordinates between -1 and 1
 	in[0] = (winx - (float)viewport[0]) / (float)viewport[2] * 2.0 - 1.0;
 	in[1] = (winy - (float)viewport[1]) / (float)viewport[3] * 2.0 - 1.0;
@@ -373,8 +373,7 @@ int glhUnProjectf(float winx, float winy, float winz, float *modelview, float *p
 #define MAT(m, r, c) (m)[(c)* 4 + (r)]
 
 //This code comes directly from GLU except that it is for float
-int glhInvertMatrixf2(float *m, float *out)
-{
+int glhInvertMatrixf2(float *m, float *out){
 	float wtmp[4][8];
 	float m0, m1, m2, m3, s;
 	float *r0, *r1, *r2, *r3;

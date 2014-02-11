@@ -70,5 +70,6 @@ private:
 	void SetDolly(float in_dolly);
 	void MoveObj(float in_x, float in_y, float in_z);
 	void RotObj(float in_x, float in_y, float in_z, float dir);
+	int glhInvertMatrixf2(float *m, float *out);
 };
 #endif
