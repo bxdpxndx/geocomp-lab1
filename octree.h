@@ -2,6 +2,11 @@
 #include <vector>
 #include "ase.h"
 #include "box3f.h"
+#include <cassert>
+#include <cmath>
+#include <cfloat>
+#define EPSILON 0.00001
+#include "GL/glut.h"
 
 class OctreeNode;
 

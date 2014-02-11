@@ -1,10 +1,4 @@
 #include "octree.h"
-#include "ase.h"
-#include "GL/gl.h"
-#include <cassert>
-#include <cmath>
-#include <cfloat>
-#define EPSILON 0.00001
 
 inline bool float_is_zero(float f) {
     return fabs(f) < EPSILON;
@@ -218,4 +212,5 @@ void draw_triangle(const triangle & t, const Octree * root) {
         glVertex3fv(root->get_vertex(t.a));
         glVertex3fv(root->get_vertex(t.b));
         glVertex3fv(root->get_vertex(t.c));
+		glEnd();
 }
