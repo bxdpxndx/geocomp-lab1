@@ -143,7 +143,7 @@ void display(void){
 	drawAxis();
 
 	// draw model
-	g_model.render();
+	//g_model.render();
 
 	// draw octre
 	o->render();
