@@ -61,7 +61,7 @@ void input::MyKeyboardFunc(unsigned char Key, int x, int y){
 		case 'Z': case 'z': reset();        break; // Reset to defaults
 		case '1': case '2': case  '3': case  '4': case  '5': case  '6': case  '7': case  '8': 
 			cout << "Get Children Number:" << Key << "\n";
-			o->getChildren(Key-1);
+			o->getChildren(Key-'1');
 			break;
 		case 'p':
 			cout << "Going to Parent!\n";
